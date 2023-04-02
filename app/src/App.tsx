@@ -67,23 +67,18 @@ export default function App() {
       <table>
         <thead>
           <tr>
+            <th>-</th>
             <th>ID</th>
             <th>Nome</th>
             <th>Dt. Nascimento</th>
             <th>
-              Peso
-              <br />
-              <span className='average'>Media: {isNaN(pesoMedio) ? 0 : Math.floor(pesoMedio)}kg</span>
+              Peso (kg)
             </th>
             <th>
-              Altura
-              <br />
-              <span className='average'>Media: {isNaN(alturaMedia) ? 0 : Math.floor(alturaMedia)}cm</span>
+              Altura (cm)
             </th>
             <th>
-              Idade
-              <br />
-              <span className='average'>Media: {isNaN(idadeMedia) ? 0 : Math.round(idadeMedia)}yo</span>
+              Idade (yo)
             </th>
           </tr>
         </thead>
@@ -91,15 +86,23 @@ export default function App() {
         <tbody>
           {
             resultado.map(dado => <tr key={dado.id}>
+              <td><input type="checkbox" name="selected" id={`selected_${dado.id}`} /></td>
               <td style={{textAlign: 'center'}}>{dado.id}</td>
               <td>{dado.nome}</td>
               <td>{dado.data_nascimento.replace('T00:00:00.000Z', '')}</td>
-              <td>{dado.peso}</td>
-              <td>{dado.altura}</td>
-              <td>{dado.idade}</td>
+              <td style={{textAlign: 'center'}}>{dado.peso}</td>
+              <td style={{textAlign: 'center'}}>{dado.altura}</td>
+              <td style={{textAlign: 'center'}}>{dado.idade}</td>
             </tr>)
           }
         </tbody>
+
+        <tfoot>
+          <td style={{textAlign: 'center'}} colSpan={4}>Media</td>
+          <td><span className='average'>{isNaN(pesoMedio) ? 0 : Math.floor(pesoMedio)}</span></td>
+          <td><span className='average'>{isNaN(alturaMedia) ? 0 : Math.floor(alturaMedia)}</span></td>
+          <td><span className='average'>{isNaN(idadeMedia) ? 0 : Math.round(idadeMedia)}</span></td>
+        </tfoot>
       </table>
     </>
   );

@@ -5,10 +5,17 @@ td, th {
   padding: 0.5rem;
   border: 1px solid #ccc;
 }
-thead {
+tbody > tr > td {
+  text-align: center;
+}
+tbody > tr > td:nth-child(3) {
+  text-align: left;
+  padding: 0 40px;
+}
+thead, tfoot {
   text-align: center;
 }
 .average {
   color: #858484;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
 }
